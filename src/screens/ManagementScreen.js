@@ -1,9 +1,9 @@
 import { View, Text, StyleSheet } from "react-native";
 
-export default function FavoritesScreen() {
+export default function ManagementScreen() {
   return (
     <View style={styles.container}>
-      <Text>FAVORITES SCREEN</Text>
+      <Text>MANAGEMENT SCREEN</Text>
     </View>
   );
 }
