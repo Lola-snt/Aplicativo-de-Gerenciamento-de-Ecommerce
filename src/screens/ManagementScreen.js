@@ -8,6 +8,10 @@ export default function ManagementScreen({ navigation }) {
         title="Teste navegação GroupMembers"
         onPress={() => navigation.navigate("GroupMembers")}
       />
+      <Button
+        title="Teste navegação NewTask"
+        onPress={() => navigation.navigate("NewTask")}
+      />
     </View>
   );
 }
