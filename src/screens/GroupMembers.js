@@ -1,4 +1,5 @@
 import React from "react";
+
 import {
   Text,
   StyleSheet,
@@ -8,8 +9,7 @@ import {
   Linking,
 } from "react-native";
 
-export function GroupMembers() {
-    
+export default function GroupMembers() {
   return (
     <View style={style.style3}>
       <View style={style.style4}>
@@ -189,7 +189,7 @@ const style = StyleSheet.create({
   style10: {
     color: "#f1f1f1",
     fontSize: 30,
-    fontWeight:"bold"
+    fontWeight: "bold",
   },
   style11: {
     width: "35%",
@@ -197,13 +197,11 @@ const style = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 10,
     backgroundColor: "#f1f1f1",
-    justifyContent:"center",
-    alignItems: "center"
-    
+    justifyContent: "center",
+    alignItems: "center",
   },
-  style12:{
-   fontSize: 16,
-   fontWeight:"bold"
-  }
+  style12: {
+    fontSize: 16,
+    fontWeight: "bold",
+  },
 });
-import React from "react";
