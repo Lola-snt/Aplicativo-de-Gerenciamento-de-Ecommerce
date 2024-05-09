@@ -1,9 +1,13 @@
 import { View, Text, StyleSheet } from "react-native";
 
-export default function ManagementScreen() {
+export default function ManagementScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <Text>MANAGEMENT SCREEN</Text>
+      <Button
+        title="Teste navegação GroupMembers"
+        onPress={() => navigation.navigate("GroupMembers")}
+      />
     </View>
   );
 }
