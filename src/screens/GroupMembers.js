@@ -9,7 +9,7 @@ import {
   Linking,
 } from "react-native";
 
-export default function GroupMembers() {
+export default function GroupMembers({ navigation }) {
   return (
     <View style={style.style3}>
       <View style={style.style4}>
@@ -74,7 +74,14 @@ export default function GroupMembers() {
           </View>
         </TouchableOpacity>
 
-        <TouchableOpacity style={style.style1}>
+        <TouchableOpacity
+          style={style.style1}
+          onPress={() =>
+            Linking.openURL(
+              "https://www.linkedin.com/in/j%C3%BAlia-cordeoli-a0b7a82b7/"
+            )
+          }
+        >
           <View style={style.style6}>
             <Image
               source={require("../../assets/Perfil_Pictures/julia.jpg")}
@@ -126,7 +133,10 @@ export default function GroupMembers() {
         </TouchableOpacity>
       </View>
 
-      <TouchableOpacity style={style.style5}>
+      <TouchableOpacity
+        style={style.style5}
+        onPress={() => navigation.goBack()}
+      >
         <View style={style.style11}>
           <Text style={style.style12}>Voltar</Text>
         </View>
@@ -137,14 +147,12 @@ export default function GroupMembers() {
 
 const style = StyleSheet.create({
   style1: {
-    borderWidth: 2,
     width: "35%",
     height: "24%",
     justifyContent: "space-between",
   },
   style2: {
     flex: 0.8,
-
     flexDirection: "row",
     flexWrap: "wrap",
     gap: 35,
@@ -157,24 +165,22 @@ const style = StyleSheet.create({
   },
   style4: {
     flex: 0.1,
-    borderWidth: 1,
+
     alignItems: "center",
     justifyContent: "center",
   },
   style5: {
     flex: 0.1,
-    borderWidth: 1,
+
     justifyContent: "center",
     alignItems: "center",
   },
   style6: {
     borderRadius: 100,
-    borderWidth: 2,
     height: "100%",
   },
   style7: {
-    borderWidth: 2,
-    height: "20%",
+    height: "24%",
     alignItems: "center",
   },
   style8: {
