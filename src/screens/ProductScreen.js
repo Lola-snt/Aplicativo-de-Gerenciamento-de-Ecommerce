@@ -1,17 +1,24 @@
 import { View, Text, StyleSheet } from "react-native";
 
 export default function ProductsScreen() {
+
   return (
     <View style={styles.container}>
-      <Text>PRODUCTS SCREEN</Text>
+      <Text>LIVRARIA</Text>
     </View>
   );
 }
 
-const styles = StyleSheet.create({
+export const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
   },
+  input:{
+    backgroundColor: "#fff",
+    padding: 8,
+    width: "60%",
+    marginBottom: 12,
+  }
 });
