@@ -13,6 +13,7 @@ export function Profile({ navigation }) {
           style={styles.input}
           placeholder=""
           onChangeText={setEmail}
+         
         />
       </View>
       <View style={styles.inputCont}>
@@ -21,10 +22,11 @@ export function Profile({ navigation }) {
           style={styles.input}
           placeholder=""
           onChangeText={setSenha}
+         
           secureTextEntry={true}
         />
       </View>
-
+      
       <View style={styles.inputCont}>
         <Button
           title="Entrar"

@@ -3,6 +3,6 @@ import Tab from "./bottom-tabs.routes";
 import PublicStack from "./public.routes";
 
 export default function Rotas() {
-  const logado = false;
-  return <>{logado ? <PublicStack /> : <Tab />}</>;
+  const logado = true;
+  return <>{logado ? <PublicStack/> : <Tab/>}</>;
 }
