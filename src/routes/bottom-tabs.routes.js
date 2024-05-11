@@ -1,17 +1,17 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { View, StyleSheet, Text } from "react-native";
 import { StackNavigation } from "./stack.routes";
-import ProductScreen from "../screens/ProductScreen";
-import ReadScreen from "../screens/ManagementScreen";
 import ProductsScreen from "../screens/ProductsScreen";
+import ManagementScreen from "../screens/ManagementScreen";
+import GroupMembers from "../screens/GroupMembers";
 
 const { Navigator, Screen } = createBottomTabNavigator();
 
-export default function Tab() {
+export default function PrivateNavigation() {
   return (
     <Navigator>
-      <Screen name="ProductsScreen" component={ProductsScreen} />
-      <Screen name="Gerenciamento" component={StackNavigation} />
+      <Screen name="ProductsScreen" component={ManagementScreen} />
+      <Screen name="Gerenciamento" component={ProductsScreen} />
+      <Screen name="Integrantes" component={GroupMembers}/>
     </Navigator>
   );
 }

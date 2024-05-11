@@ -4,7 +4,7 @@ import { SignUp } from "../screens/signUp";
 
 const { Navigator, Screen } = createStackNavigator();
 
-const PublicStack = () => {
+export const PublicNavigation= () => {
   return (
     <Navigator>
       <Screen name="login" component={Login} />
@@ -13,4 +13,4 @@ const PublicStack = () => {
   );
 };
 
-export default PublicStack;
+

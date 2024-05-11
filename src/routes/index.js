@@ -1,8 +1,7 @@
-import { NavigationContainer } from "@react-navigation/native";
-import Tab from "./bottom-tabs.routes";
-import PublicStack from "./public.routes";
+import PrivateNavigation from "./bottom-tabs.routes";
+import {PublicNavigation} from "./public.routes";
 
-export default function Rotas() {
-  const logado = true;
-  return <>{logado ? <PublicStack/> : <Tab/>}</>;
+export default function Routes() {
+  const logado = false;
+  return <>{logado ? <PublicNavigation/> : <PrivateNavigation/>}</>;
 }
