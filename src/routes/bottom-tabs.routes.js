@@ -6,6 +6,7 @@ import DetailsScreen from "../screens/DetailsScreen";
 import { createStackNavigator } from "@react-navigation/stack";
 import CreateBookScreen from "../screens/CreateProductScreen";
 import EditBookScreen from "../screens/EditProductScreen";
+import Cadastrar from "../screens/Cadatrar";
 import { Ionicons, MaterialCommunityIcons} from '@expo/vector-icons'
 
 const Tab = createBottomTabNavigator();
@@ -57,6 +58,8 @@ function Produtos() {
     <Stack.Screen name="Detalhes" component={DetailsScreen} />
     <Stack.Screen name="Adicionar" component={CreateBookScreen}/>
     <Stack.Screen name="Editar" component={EditBookScreen}/>
+    <Stack.Screen name="Cadastrar" component={Cadastrar}/>
+    
   </Stack.Navigator>
   )
 }

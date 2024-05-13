@@ -1,49 +1,59 @@
-import { Text, View, StyleSheet, Button, TouchableOpacity } from "react-native";
+import {
+  View,
+  StyleSheet,
+  Text,
+  TextInput,
+  Image,
+  Button,
+  TouchableOpacity,
+} from "react-native";
 import { useState } from "react";
-import { TextInput } from "react-native-gesture-handler";
-import { login } from "../services/auth";
+import Cadastrar from "../screens/Cadatrar";
 
-export default function Login({ navigation }) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const handleLogin = async () => {
-    const token = await login(email, password);
-    console.log(token);
-  };
+// const senhaReal = "funcionario";
+// const emailReal = "1234";
+export default function LoginScreen({ navigation }) {
+  // const [email, setEmail] = useState("");
+  // const [senha, setSenha] = useState("");
+  const logo = "../../assets/logo.png";
 
   return (
     <View style={styles.container}>
-      <Text>Página de Login</Text>
-      <TextInput
-        placeholder="DIGITE SEU EMAIL"
-        style={styles.input}
-        value={email}
-        onChangeText={setEmail}
-        keyboardType="email-address"
-      />
-      <TextInput
-        placeholder="DIGITE SUA SENHA"
-        style={styles.input}
-        value={password}
-        keyboardType="numeric"
-        onChangeText={setPassword}
-        secureTextEntry
-      />
+      <View style={styles.inputCont}>
+        <Image style={styles.logo} source={require(logo)} />
+        <Text style={{ color: "#a61a1d", fontSize: 18 }}>Email: </Text>
+        <TextInput
+          style={styles.input}
+          // placeholder=""
+          // onChangeText={setEmail}
+        />
+      </View>
+      <View style={styles.inputCont}>
+        <Text style={{ color: "#a61a1d", fontSize: 18 }}>Senha: </Text>
+        <TextInput
+          style={styles.input}
+          placeholder=""
+          // onChangeText={setSenha}
+          secureTextEntry={true}
+        />
 
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => login("teste2@teste.com", "senha@123")}
-      >
-        <Text>Entrar</Text>
-      </TouchableOpacity>
+         <Text
+          style={{ color: "#a61a1d", fontSize: 17,  textAlign: "center",  marginVertical: 10, gap: 5}}>  É novo por aqui?
+          <Button title="Me cadastrar 😁" color="#a61a1d" />
+        </Text>
+      </View>
 
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => navigation.navigate("SingUp")}
-      >
-        <Text>Cadastar</Text>
-      </TouchableOpacity>
+      <View style={styles.inputCont}>
+        <Button
+          title="Entrar"
+          color="#a61a1d"
+          // onPress={() => {
+          //   if (email == emailReal && senha == senhaReal) {
+          //     navigation.navigate("Home");
+          //   }
+          // }}
+        />
+      </View>
     </View>
   );
 }
@@ -51,20 +61,23 @@ export default function Login({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#333",
     justifyContent: "center",
     alignItems: "center",
-    gap: 5,
+    gap: 10,
+    backgroundColor: "#FFF5EE",
+  },
+  inputCont: {
+    width: "70%",
   },
   input: {
-    backgroundColor: "#fff",
-    padding: 8,
-    width: "60%",
-    marginBottom: 12,
+    fontSize: 30,
+    borderWidth: 2,
+    borderColor: "#a61a1d",
+    backgroundColor: "#FFF5EE",
   },
-  button: {
-    width: "35%",
-    height: "5%",
-    backgroundColor: "white",
+  logo: {
+    alignSelf: "center",
+    height: 300,
+    width: 300,
   },
 });
