@@ -1,47 +1,76 @@
-import { useEffect, useState } from "react";
-import { View, Text, FlatList, TextInput, Button, StyleSheet } from "react-native";
-import { createBook, getAllBook, deleteBook, updateBook } from "../services/books";
+import { useEffect, useState, useCallback } from "react";
+import {
+  View,
+  Text,
+  FlatList,
+  Button,
+  SafeAreaView,
+  ScrollView,
+  RefreshControl,
+  TouchableWithoutFeedback
+} from "react-native";
+import { getAllBook } from "../services/books";
 import { styles } from "./ProductScreen";
-import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 
-export default function ProductsScreen({navigation}) {
-  const colors = ['#e0e0e0','#FFF'];
+
+
+export default function ProductsScreen({ navigation }) {
+  const colors = ['#e0e0e0', '#FFF'];
 
   const [allBook, setAllBook] = useState([]);
+  const [refreshing, setRefreshing] = useState(false);
+
+  const onRefresh = useCallback(() => {
+    setRefreshing(true);
+    setTimeout(() => {
+      setRefreshing(false);
+    }, 2000);
+    fetch()
+  }, []);
+
+  const fetch = async () => {
+    const data = await getAllBook();
+    console.log(data);
+    setAllBook(data);
+  };
 
   useEffect(() => {
-    const fetch = async () => {
-      const data = await getAllBook();
-      console.log(data);
-      setAllBook(data);
-    };
+    
     fetch();
   }, []);
 
   return (
-    <View style={{flex:1}}>
-      <FlatList
-        data={allBook}
-        keyExtractor={item => item.id}
-        renderItem={({ item, index }) => (
-          <TouchableWithoutFeedback 
-            onPress={ () => navigation.navigate('Detalhes', {bookId: item.id})}
-            style = {{backgroundColor: colors[index % colors.length]}}>
-          <View style={{flex:1, flexDirection: 'row' }}>
-            <View style={{width: '80%'}}>
-            <Text style={{fontSize: 30}}>{item.titulo}</Text>
-            <Text>{item.autor}</Text>
-            </View>
-          </View>
-          </TouchableWithoutFeedback>
-        )}
-      />
-      <View style={styles.footer}>
-        <Button 
-          title="ADICIONAR"
-          onPress={() => navigation.navigate(`Adicionar`, {})}
+    <SafeAreaView>
+      <ScrollView
+        contentContainerStyle={styles.scrollView}
+        refreshControl={
+          <RefreshControl 
+          refreshing={refreshing} 
+          onRefresh={onRefresh} />
+        }>
+        <FlatList
+          data={allBook}
+          keyExtractor={item => item.id}
+          renderItem={({ item, index }) => (
+            <TouchableWithoutFeedback
+              onPress={() => navigation.navigate('Detalhes', { bookId: item.id })}
+              style={{ backgroundColor: colors[index % colors.length] }}>
+              <View style={{ flex: 1, flexDirection: 'row' }}>
+                <View style={{ width: '80%' }}>
+                  <Text style={{ fontSize: 30 }}>{item.titulo}</Text>
+                  <Text>{item.autor}</Text>
+                </View>
+              </View>
+            </TouchableWithoutFeedback>
+          )}
+        />
+        <View style={styles.footer}>
+          <Button
+            title="ADICIONAR"
+            onPress={() => navigation.navigate(`Adicionar`, {})}
           />
-      </View>
-    </View>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
