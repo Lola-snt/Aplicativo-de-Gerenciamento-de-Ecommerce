@@ -188,6 +188,7 @@ const style = StyleSheet.create({
     color: "#f1f1f1",
     fontSize: 30,
     fontWeight: "bold",
+    marginTop: 30,
   },
   style11: {
     width: "35%",
