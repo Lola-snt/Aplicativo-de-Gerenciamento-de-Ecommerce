@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
-import { View, Text, FlatList, TextInput, Button } from "react-native";
+import { View, Text, FlatList, TextInput, Button, StyleSheet } from "react-native";
 import { createBook, getAllBook, deleteBook, updateBook } from "../services/books";
-import { styles } from "./ProductScreen"
+import { styles } from "./ProductScreen";
+import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 
-export default function ProductsScreen() {
+export default function ProductsScreen({navigation}) {
+  const colors = ['#e0e0e0','#FFF'];
+
   const [title, setTitle] = useState("");
   const [autor, setAutor] = useState("");
   const [editora, setEditora] = useState("");
@@ -20,70 +23,29 @@ export default function ProductsScreen() {
   }, []);
 
   return (
-    <View>
-      <Text>LIVROS</Text>
-      <TextInput
-        placeholder="NOME DO LIVRO"
-        style={styles.input}
-        value={title}
-        onChangeText={setTitle}
-      />
-      <TextInput
-        placeholder="AUTOR DO LIVRO"
-        style={styles.input}
-        value={autor}
-        onChangeText={setAutor}
-      />
-      <TextInput
-        placeholder="EDITORA"
-        style={styles.input}
-        value={editora}
-        onChangeText={setEditora}
-      />
-      <Button
-        title="ADICIONAR"
-        onPress={() => createBook({ title, autor, editora })}
-      />
-
+    <View style={{flex:1}}>
       <FlatList
         data={allBook}
         keyExtractor={item => item.id}
-        renderItem={({ item }) => (
-          <View>
-            <Text>{item.title}</Text>
+        renderItem={({ item, index }) => (
+          <TouchableWithoutFeedback 
+            onPress={ () => navigation.navigate('Detalhes', {bookId: item.id})}
+            style = {{backgroundColor: colors[index % colors.length]}}>
+          <View style={{flex:1, flexDirection: 'row' }}>
+            <View style={{width: '80%'}}>
+            <Text style={{fontSize: 30}}>{item.title}</Text>
             <Text>{item.autor}</Text>
-            <Text />
-            <Button
-              title="DELETAR LIVRO"
-              onPress={() => deleteBook(item.id)}
-            />
-            <TextInput
-              placeholder="NOME DO LIVRO"
-              style={styles.input}
-              value={title}
-              onChangeText={setTitle}
-            />
-            <TextInput
-              placeholder="AUTOR DO LIVRO"
-              style={styles.input}
-              value={autor}
-              onChangeText={setAutor}
-            />
-            <TextInput
-              placeholder="EDITORA"
-              style={styles.input}
-              value={editora}
-              onChangeText={setEditora}
-            />
-            <Button
-              title="EDITAR LIVRO"
-              onPress={() => updateBook(item.id, title, autor, editora)}
-            />
+            </View>
           </View>
+          </TouchableWithoutFeedback>
         )}
       />
+      <View style={styles.footer}>
+        <Button 
+          title="ADICIONAR"
+          onPress={() => navigation.navigate(`Adicionar`, {})}
+          />
+      </View>
     </View>
   );
 }
-
-/*  */

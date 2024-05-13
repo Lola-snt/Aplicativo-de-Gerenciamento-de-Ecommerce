@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet } from "react-native";
 
-export default function ProductsScreen() {
+export default function ProductsScreen({navigation}) {
 
   return (
     <View style={styles.container}>
@@ -20,5 +20,9 @@ export const styles = StyleSheet.create({
     padding: 8,
     width: "60%",
     marginBottom: 12,
-  }
+  },
+  footer: {
+        flex: 1,
+        justifyContent: 'flex-end',
+  },
 });

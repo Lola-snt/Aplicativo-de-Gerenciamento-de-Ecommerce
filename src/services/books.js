@@ -25,11 +25,19 @@ export const getAllBook = async () => {
   } catch (err) {
     console.log(err);
   }
-
-
-
-
 };
+
+export const getBook = async (bookId) => {
+  try {
+    const response = await api.get(`/books/${bookId}.json`)
+    return response.data
+  }
+  catch (err) {
+    console.log(err);
+  }
+
+}
+
 export const updateBook = async (bookid, title, autor, editora) => {
   try {
     console.log(bookid, title, editora, autor)
