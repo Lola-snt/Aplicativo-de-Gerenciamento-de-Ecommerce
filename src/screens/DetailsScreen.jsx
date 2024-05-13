@@ -4,23 +4,22 @@ import { Button, Image, StyleSheet, Text, View } from "react-native";
 import { getBook } from "../services/books";
 
 export default function DetailsScreen({route, navigation}) {
-  console.log(route)
   const {bookId} = route.params;
   const [book, setBook] = useState("");
 
   useEffect(() => {
     const fetch = async () => {
       const data = await getBook(bookId);
-      console.log(data);
+      data.id = bookId
       setBook(data);
     };
     fetch();
-  }, {});
+  }, []);
 
   return (
     <View style={styles.container}>
       <View style={styles.area}>
-        <Image source={book.capa} style={styles.image} />
+        <Image source={{uri: book.capa}} style={styles.image} />
         <Text style={styles.title}>{book.titulo}</Text>
         <Text style={styles.author}>{book.autor}</Text>
       </View>
@@ -48,10 +47,10 @@ export default function DetailsScreen({route, navigation}) {
            {book.descricao}
           </Text>
         </View>
-        <View>
+        <View style={styles.footer}>
         <Button
               title="EDITAR"
-              onPress={() => {}}
+              onPress={() => {navigation.navigate('Editar', {book})}}
             />
         </View>
       </View>
@@ -119,4 +118,8 @@ const styles = StyleSheet.create({
   description: {
     textAlign: "justify",
   },
+  footer: {
+    flex:1,
+    justifyContent: 'flex-end',
+  }
 });

@@ -7,10 +7,6 @@ import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 export default function ProductsScreen({navigation}) {
   const colors = ['#e0e0e0','#FFF'];
 
-  const [title, setTitle] = useState("");
-  const [autor, setAutor] = useState("");
-  const [editora, setEditora] = useState("");
-
   const [allBook, setAllBook] = useState([]);
 
   useEffect(() => {
@@ -33,7 +29,7 @@ export default function ProductsScreen({navigation}) {
             style = {{backgroundColor: colors[index % colors.length]}}>
           <View style={{flex:1, flexDirection: 'row' }}>
             <View style={{width: '80%'}}>
-            <Text style={{fontSize: 30}}>{item.title}</Text>
+            <Text style={{fontSize: 30}}>{item.titulo}</Text>
             <Text>{item.autor}</Text>
             </View>
           </View>

@@ -3,7 +3,6 @@ import api from "./api";
 export const createBook = async (bookData) => {
     try {
         const response = await api.post('/books.json', bookData)
-        console.log(response.data.name)
     } catch (err) {
         console.log(err)
     }
@@ -38,14 +37,10 @@ export const getBook = async (bookId) => {
 
 }
 
-export const updateBook = async (bookid, title, autor, editora) => {
+export const updateBook = async (bookid,bookData) => {
   try {
-    console.log(bookid, title, editora, autor)
-      const response = await api.put("/books/"+bookid +".json", {
-          title: title,
-          autor: autor,
-          editora: editora
-      })
+    console.log(bookid, bookData)
+      const response = await api.put("/books/"+bookid +".json",bookData)
   } catch(err) {
       console.log("ERRO: ", err)
   }
@@ -59,5 +54,3 @@ export const deleteBook = async (bookId) => {
       console.log("ERRO: ", err)
   }
 };
-
-const getBookbyId = () =>{}

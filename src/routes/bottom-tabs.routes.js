@@ -4,7 +4,8 @@ import ProductsScreen from "../screens/ProductsScreen";
 import GroupMembers from "../screens/GroupMembers";
 import DetailsScreen from "../screens/DetailsScreen";
 import { createStackNavigator } from "@react-navigation/stack";
-import CreateBookScreen from "../screens/CreateProduct";
+import CreateBookScreen from "../screens/CreateProductScreen";
+import EditBookScreen from "../screens/EditProductScreen";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -12,7 +13,7 @@ const Stack = createStackNavigator();
 export default function PrivateNavigation() {
   return (
     <Tab.Navigator>
-      <Tab.Screen name="Produtos" component={Produtos} options={{headerShown: false}}/>
+      <Tab.Screen name="Gestao" component={Produtos} options={{headerShown: false}}/>
       <Tab.Screen name="Integrantes" component={GroupMembers}/>
     </Tab.Navigator>
   );
@@ -24,6 +25,7 @@ function Produtos() {
     <Stack.Screen name="Produtos" component={ProductsScreen} />
     <Stack.Screen name="Detalhes" component={DetailsScreen} />
     <Stack.Screen name="Adicionar" component={CreateBookScreen}/>
+    <Stack.Screen name="Editar" component={EditBookScreen}/>
   </Stack.Navigator>
   )
 }
