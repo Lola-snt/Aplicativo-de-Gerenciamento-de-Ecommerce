@@ -3,7 +3,7 @@ import {
   View,
   Text,
   FlatList,
-  Button,
+  TouchableOpacity,
   Image,
   SafeAreaView,
   ScrollView,
@@ -12,7 +12,9 @@ import {
   ActivityIndicator,
   StyleSheet,
 } from "react-native";
+import { StatusBar } from "expo-status-bar";
 import { getAllBook } from "../services/books";
+import AntDesign from "@expo/vector-icons/AntDesign";
 
 const imagem = "../../assets/livro2.jpg";
 
@@ -60,6 +62,14 @@ export default function ProductsScreen({ navigation }) {
           }
           style={{ marginTop: 20 }}
         >
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => navigation.navigate(`Adicionar`, {})}
+          >
+            <Text style={{ color: "white", fontWeight: 900, fontSize: 18 }}>
+              ADICIONAR
+            </Text>
+          </TouchableOpacity>
           <FlatList
             data={allBook}
             keyExtractor={(item) => item.id}
@@ -76,17 +86,20 @@ export default function ProductsScreen({ navigation }) {
                       <Text style={styles.title}>{item.titulo}</Text>
                       <Text style={styles.author}>{item.autor}</Text>
                     </View>
+                    <View
+                      style={{
+                        width: "28%",
+                        flexDirection: "row",
+                        gap: 10,
+                        justifyContent: "flex-end",
+                      }}
+                    ></View>
                   </View>
                 </View>
               </TouchableWithoutFeedback>
             )}
           />
-          <View style={styles.footer}>
-            <Button
-              title="ADICIONAR"
-              onPress={() => navigation.navigate(`Adicionar`, {})}
-            />
-          </View>
+          <StatusBar style="auto" />
         </ScrollView>
       )}
     </SafeAreaView>
@@ -104,10 +117,6 @@ const styles = StyleSheet.create({
     padding: 8,
     width: "60%",
     marginBottom: 12,
-  },
-  footer: {
-    flex: 1,
-    justifyContent: "flex-end",
   },
   scrollView: {
     flexGrow: 1,
@@ -141,5 +150,15 @@ const styles = StyleSheet.create({
   author: {
     fontSize: 14,
     color: "gray",
+  },
+  button: {
+    backgroundColor: "#32BC68",
+    height: 50,
+    width: "40%",
+    borderRadius: 5,
+    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: 20,
+    marginStart: 20,
   },
 });

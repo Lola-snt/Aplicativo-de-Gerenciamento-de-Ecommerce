@@ -4,13 +4,15 @@ import { SignUp } from "../screens/signUp";
 
 const { Navigator, Screen } = createStackNavigator();
 
-export const PublicNavigation= () => {
+export const PublicNavigation = () => {
   return (
     <Navigator>
-      <Screen name="login" component={Login} />
-      <Screen name="SingUp" component={SignUp} options={{headerShown: false}}/>
+      <Screen name="login" component={Login} options={{ headerShown: false }} />
+      <Screen
+        name="SingUp"
+        component={SignUp}
+        options={{ headerShown: false }}
+      />
     </Navigator>
   );
 };
-
-

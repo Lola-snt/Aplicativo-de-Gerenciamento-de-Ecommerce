@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
 import { StatusBar } from "expo-status-bar";
-import { Button, Image, StyleSheet, Text, View } from "react-native";
+import { TouchableOpacity, Image, StyleSheet, Text, View } from "react-native";
 import { getBook } from "../services/books";
 
-export default function DetailsScreen({route, navigation}) {
-  const {bookId} = route.params;
+export default function DetailsScreen({ route, navigation }) {
+  const { bookId } = route.params;
   const [book, setBook] = useState("");
 
   useEffect(() => {
     const fetch = async () => {
       const data = await getBook(bookId);
-      data.id = bookId
+      data.id = bookId;
       setBook(data);
     };
     fetch();
@@ -19,7 +19,7 @@ export default function DetailsScreen({route, navigation}) {
   return (
     <View style={styles.container}>
       <View style={styles.area}>
-        <Image source={{uri: book.capa}} style={styles.image} />
+        <Image source={{ uri: book.capa }} style={styles.image} />
         <Text style={styles.title}>{book.titulo}</Text>
         <Text style={styles.author}>{book.autor}</Text>
       </View>
@@ -44,14 +44,20 @@ export default function DetailsScreen({route, navigation}) {
             ellipsizeMode="tail"
             style={styles.description}
           >
-           {book.descricao}
+            {book.descricao}
           </Text>
         </View>
         <View style={styles.footer}>
-        <Button
-              title="EDITAR"
-              onPress={() => {navigation.navigate('Editar', {book})}}
-            />
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => {
+              navigation.navigate("Editar", { book });
+            }}
+          >
+            <Text style={{ color: "white", fontWeight: 900, fontSize: 18 }}>
+              EDITAR
+            </Text>
+          </TouchableOpacity>
         </View>
       </View>
       <StatusBar style="auto" />
@@ -119,7 +125,15 @@ const styles = StyleSheet.create({
     textAlign: "justify",
   },
   footer: {
-    flex:1,
-    justifyContent: 'flex-end',
-  }
+    flex: 1,
+    justifyContent: "flex-end",
+  },
+  button: {
+    backgroundColor: "#32BC68",
+    height: 60,
+    borderRadius: 15,
+    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: 20,
+  },
 });

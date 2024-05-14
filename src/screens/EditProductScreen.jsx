@@ -1,19 +1,19 @@
 import { useEffect, useState } from "react";
-import { Button, StyleSheet, View } from "react-native";
+import { TouchableOpacity, StyleSheet, View, Text } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
 import { createBook, deleteBook, updateBook } from "../services/books";
 
 export default function EditBookScreen({ route, navigation }) {
-  const {book} = route.params;
-  const [bookId, setId] = useState("")
-  const [titulo, setTitulo] = useState("")
-  const [autor, setAutor] = useState("")
-  const [editora, setEditora] = useState("")
-  const [idioma, setIdioma] = useState("")
-  const [paginas, setPaginas] = useState("")
-  const [lancamento, setLancamento] = useState("")
-  const [capa, setCapa] = useState("")
-  const [descricao, setDescricao] = useState("")
+  const { book } = route.params;
+  const [bookId, setId] = useState("");
+  const [titulo, setTitulo] = useState("");
+  const [autor, setAutor] = useState("");
+  const [editora, setEditora] = useState("");
+  const [idioma, setIdioma] = useState("");
+  const [paginas, setPaginas] = useState("");
+  const [lancamento, setLancamento] = useState("");
+  const [capa, setCapa] = useState("");
+  const [descricao, setDescricao] = useState("");
 
   useEffect(() => {
     setId(book.id);
@@ -26,7 +26,7 @@ export default function EditBookScreen({ route, navigation }) {
     setCapa(book.capa);
     setDescricao(book.descricao);
   }, []);
-  
+
   return (
     <View style={styles.container}>
       <TextInput
@@ -77,48 +77,74 @@ export default function EditBookScreen({ route, navigation }) {
         value={descricao}
         onChangeText={setDescricao}
       />
-      <View styles={styles.footer}> 
-        <Button
-          title="EDITAR"
-          onPress={() => { updateBook(bookId,{ 
-            titulo, 
-            autor, 
-            editora, 
-            idioma, 
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => {
+          updateBook(bookId, {
+            titulo,
+            autor,
+            editora,
+            idioma,
             paginas,
             lancamento,
             capa,
-            descricao });
-            navigation.navigate('Produtos', {})}}
-        />
-        <Button
-          title="DELETAR"
-          onPress={() => { deleteBook(bookId);
-            navigation.navigate('Produtos', {})
-          }}
-        />
-      </View>
+            descricao,
+          });
+          navigation.navigate("Produtos", {});
+        }}
+      >
+        <Text style={{ color: "white", fontWeight: 900, fontSize: 18 }}>
+          EDITAR
+        </Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.button2}
+        onPress={() => {
+          deleteBook(bookId);
+          navigation.navigate("Produtos", {});
+        }}
+      >
+        <Text style={{ color: "white", fontWeight: 900, fontSize: 18 }}>
+          DELETAR
+        </Text>
+      </TouchableOpacity>
     </View>
-      
-  )
+  );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'col',
-    alignContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     gap: 5,
+    width: "100%",
   },
   input: {
     borderWidth: 1,
-    borderColor: '#e0e0e0',
+    borderColor: "#e0e0e0",
     height: 50,
-    backgroundColor: '#fff'
+    width: "90%",
+    backgroundColor: "#fff",
+    borderRadius: 10,
+    paddingStart: 10,
   },
-  footer: {
-    flex: 1,
-    justifyContent: 'flex-end',
-    gap: 5,
+  button: {
+    backgroundColor: "#32BC68",
+    height: 60,
+    width: "90%",
+    borderRadius: 10,
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 20,
   },
-})
+  button2: {
+    backgroundColor: "#32BC68",
+    height: 60,
+    width: "90%",
+    borderRadius: 10,
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 5,
+  },
+});

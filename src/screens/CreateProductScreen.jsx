@@ -1,17 +1,17 @@
 import { useState } from "react";
-import { Button, StyleSheet, View } from "react-native";
+import { TouchableOpacity, StyleSheet, View, Text } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
 import { createBook } from "../services/books";
 
 export default function CreateBookScreen({ navigation }) {
-  const [titulo, setTitulo] = useState("")
-  const [autor, setAutor] = useState("")
-  const [editora, setEditora] = useState("")
-  const [idioma, setIdioma] = useState("")
-  const [paginas, setPaginas] = useState("")
-  const [lancamento, setLancamento] = useState("")
-  const [capa, setCapa] = useState("")
-  const [descricao, setDescricao] = useState("")
+  const [titulo, setTitulo] = useState("");
+  const [autor, setAutor] = useState("");
+  const [editora, setEditora] = useState("");
+  const [idioma, setIdioma] = useState("");
+  const [paginas, setPaginas] = useState("");
+  const [lancamento, setLancamento] = useState("");
+  const [capa, setCapa] = useState("");
+  const [descricao, setDescricao] = useState("");
 
   return (
     <View style={styles.container}>
@@ -34,7 +34,7 @@ export default function CreateBookScreen({ navigation }) {
         onChangeText={setEditora}
       />
       <TextInput
-        placeholder="N PAGINAS"
+        placeholder="Nº PAGINAS"
         style={styles.input}
         value={paginas}
         onChangeText={setPaginas}
@@ -63,42 +63,54 @@ export default function CreateBookScreen({ navigation }) {
         value={descricao}
         onChangeText={setDescricao}
       />
-      <View styles={styles.footer}> 
-        <Button
-          title="ADICIONAR"
-          onPress={() => {createBook({ 
-            titulo, 
-            autor, 
-            editora, 
-            idioma, 
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => {
+          createBook({
+            titulo,
+            autor,
+            editora,
+            idioma,
             paginas,
             lancamento,
             capa,
-            descricao });
-            navigation.navigate('Produtos', {})}}
-        />
-      </View>
+            descricao,
+          });
+          navigation.navigate("Produtos", {});
+        }}
+      >
+        <Text style={{ color: "white", fontWeight: 900, fontSize: 18 }}>
+          ADICIONAR
+        </Text>
+      </TouchableOpacity>
     </View>
-  )
+  );
 }
-
-
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'col',
-    alignContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     gap: 5,
+    width: "100%",
   },
   input: {
     borderWidth: 1,
-    borderColor: '#e0e0e0',
+    borderColor: "#e0e0e0",
     height: 50,
-    backgroundColor: '#fff'
+    width: "90%",
+    backgroundColor: "#fff",
+    borderRadius: 10,
+    paddingStart: 10,
   },
-  footer: {
-    flex: 1,
-    justifyContent: 'flex-end',
+  button: {
+    backgroundColor: "#32BC68",
+    height: 60,
+    width: "90%",
+    borderRadius: 10,
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 20,
   },
-})
+});
