@@ -1,23 +1,25 @@
 import axios from "axios";
 
-const API_KEY = process.env.API_KEY
-const URL_API = process.env.URL_API
+const API_KEY = process.env.EXPO_PUBLIC_API_KEY
+const URL_API = process.env.EXPO_PUBLIC_URL_API
 
 const authenticate = async (mode, email, password) => {
-  try {
-    const response = await axios.post(`${URL_API}${mode}?key=${API_KEY}`, {
+    const url = `${URL_API}${mode}?key=${API_KEY}`
+    const response = await axios.post(url, {
       email: email,
       password: password,
       returnSecureToken: true,
-    });
-    console.log(response);
-    return response.data.idToken;
-  } catch (err) {
-    console.log(err);
-  }
+    }).then((res) => {
+      return res.data.idToken;
+    }).catch((error) => {
+      if (error.response) {
+        console.log(error.response.data);
+      }
+    })
+    return response
 };
 
-export const createUse = async (email, password) => {
+export const createUser = async (email, password) => {
   const token = await authenticate("signUp", email, password);
   return token;
 };
