@@ -5,8 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="722427b4-de64-408f-bfab-17f561980dd5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/screens/CreateProductScreen.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/screens/DetailsScreen.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/screens/EditProductScreen.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/screens/signUp.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/services/books.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/bottom-tabs.routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/bottom-tabs.routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/public.routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/public.routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/stack.routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/stack.routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/GroupMembers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/GroupMembers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/Login.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/LoginScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/LoginScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/ManagementScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/ManagementScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/ProductScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/ProductScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/ProductsScreen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/ProductsScreen.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/getAllTasks.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,7 +55,7 @@
     "RunOnceActivity.cidr.known.project.marker": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "RaphaBranch"
+    "git-widget-placeholder": "Merging RaphaBranch"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />

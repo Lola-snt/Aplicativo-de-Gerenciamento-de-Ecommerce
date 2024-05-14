@@ -133,14 +133,6 @@ export default function GroupMembers({ navigation }) {
         </TouchableOpacity>
       </View>
 
-      <TouchableOpacity
-        style={style.style5}
-        onPress={() => navigation.goBack()}
-      >
-        <View style={style.style11}>
-          <Text style={style.style12}>Voltar</Text>
-        </View>
-      </TouchableOpacity>
     </View>
   );
 }
