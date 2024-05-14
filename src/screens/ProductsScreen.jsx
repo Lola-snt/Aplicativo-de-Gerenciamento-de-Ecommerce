@@ -6,7 +6,6 @@ import {
   TouchableOpacity,
   Image,
   SafeAreaView,
-  ScrollView,
   RefreshControl,
   TouchableWithoutFeedback,
   ActivityIndicator,
@@ -55,52 +54,49 @@ export default function ProductsScreen({ navigation }) {
           <ActivityIndicator size="large" color="#0000ff" />
         </View>
       ) : (
-        <ScrollView
-          contentContainerStyle={styles.scrollView}
+        <FlatList
+          data={allBook}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item, index }) => (
+            <TouchableWithoutFeedback
+              onPress={() =>
+                navigation.navigate("Detalhes", { bookId: item.id })
+              }
+            >
+              <View style={styles.container}>
+                <View style={styles.box}>
+                  <Image source={{ uri: item.capa }} style={styles.image} />
+                  <View>
+                    <Text style={styles.title}>{item.titulo}</Text>
+                    <Text style={styles.author}>{item.autor}</Text>
+                  </View>
+                  <View
+                    style={{
+                      width: "28%",
+                      flexDirection: "row",
+                      gap: 10,
+                      justifyContent: "flex-end",
+                    }}
+                  ></View>
+                </View>
+              </View>
+            </TouchableWithoutFeedback>
+          )}
           refreshControl={
             <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
           }
-          style={{ marginTop: 20 }}
-        >
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => navigation.navigate(`Adicionar`, {})}
-          >
-            <Text style={{ color: "white", fontWeight: 900, fontSize: 18 }}>
-              ADICIONAR
-            </Text>
-          </TouchableOpacity>
-          <FlatList
-            data={allBook}
-            keyExtractor={(item) => item.id}
-            renderItem={({ item, index }) => (
-              <TouchableWithoutFeedback
-                onPress={() =>
-                  navigation.navigate("Detalhes", { bookId: item.id })
-                }
-              >
-                <View style={styles.container}>
-                  <View style={styles.box}>
-                    <Image source={{ uri: item.capa }} style={styles.image} />
-                    <View>
-                      <Text style={styles.title}>{item.titulo}</Text>
-                      <Text style={styles.author}>{item.autor}</Text>
-                    </View>
-                    <View
-                      style={{
-                        width: "28%",
-                        flexDirection: "row",
-                        gap: 10,
-                        justifyContent: "flex-end",
-                      }}
-                    ></View>
-                  </View>
-                </View>
-              </TouchableWithoutFeedback>
-            )}
-          />
-          <StatusBar style="auto" />
-        </ScrollView>
+          ListHeaderComponent={() => (
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => navigation.navigate(Adicionar, {})}
+            >
+              <Text style={{ color: "white", fontWeight: 900, fontSize: 18 }}>
+                ADICIONAR
+              </Text>
+            </TouchableOpacity>
+          )}
+          ListFooterComponent={() => <StatusBar style="auto" />}
+        />
       )}
     </SafeAreaView>
   );
@@ -117,9 +113,6 @@ const styles = StyleSheet.create({
     padding: 8,
     width: "60%",
     marginBottom: 12,
-  },
-  scrollView: {
-    flexGrow: 1,
   },
   loadingContainer: {
     flex: 1,
@@ -158,6 +151,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     justifyContent: "center",
     alignItems: "center",
+    marginTop: 20,
     marginBottom: 20,
     marginStart: 20,
   },
