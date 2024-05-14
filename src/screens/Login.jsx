@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import { useContext, useState } from "react";
 import { AuthContext } from "../context/auth-context";
+import LoadingWait from "../component/LoadingWait";
 
 // const senhaReal = "funcionario";
 // const emailReal = "1234";
@@ -76,6 +77,7 @@ export default function LoginScreen({ navigation }) {
       </View>
 
       <View style={styles.inputCont}>
+        <LoadingWait visible={loading} />
         <Button
           title="Entrar"
           color="#a61a1d"
